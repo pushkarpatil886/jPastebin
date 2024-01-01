@@ -4,13 +4,8 @@ import org.jpaste.pastebin.account.PastebinAccount;
 import org.jpaste.pastebin.exceptions.LoginException;
 import org.jpaste.pastebin.exceptions.ParseException;
 
-/**
- * 
- * Example on how to remove your last pasted paste
- * 
- * @author Brian B
- * 
- */
+
+ 
 public class DeletePasteExample {
 
 	public static void main(String[] args) throws LoginException, ParseException, PasteException {
