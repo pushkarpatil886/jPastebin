@@ -24,119 +24,44 @@ import org.xml.sax.InputSource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * 
- * A global representation of the pastebin site
- * 
- * <p>
- * Holds various constants and method shortcuts
- * </p>
- * 
- * @author Brian B
- * 
- */
+
 public class Pastebin {
-    /**
-     * Used to interact with the pastebin API
-     */
+    
     public static final String API_POST_LINK = "https://pastebin.com/api/api_post.php";
-    /**
-     * Used for fetching an user session id
-     */
+   
     public static final String API_LOGIN_LINK = "https://pastebin.com/api/api_login.php";
 
-    /**
-     * Scraping api. Must be lifetime pro in otrder to use it.
-     */
+    
     public static final String API_SCRAPING_LINK = "https://pastebin.com/api_scraping.php";
 
-    /**
-     * Fetches a paste text from pastebin
-     *
-     * @param pasteKey
-     *            the unique paste key
-     * @return contents of the paste
-     */
+    
     public static String getContents(String pasteKey) {
         return PastebinLink.getContents(pasteKey);
     }
 
-    /**
-     * Generates a paste on pastebin and returns the URL to it
-     * 
-     * @param developerKey
-     *            a developer key which can be fetched from the pastebin API
-     *            page
-     * @param contents
-     *            contents of the paste
-     * @return URL to paste
-     * @throws PasteException
-     *             if it failed to push the paste
-     */
+   
     public static URL pastePaste(String developerKey, String contents) throws PasteException {
         return pastePaste(developerKey, contents, null);
     }
 
-    /**
-     * Generates a paste on pastebin and returns the URL to it
-     * 
-     * @param developerKey
-     *            a developer key which can be fetched from the pastebin API
-     *            page
-     * @param contents
-     *            contents of the paste
-     * @param title
-     *            title of the paste
-     * @return URL to paste
-     * @throws PasteException
-     *             if it failed to push the paste
-     */
+   
     public static URL pastePaste(String developerKey, String contents, String title) throws PasteException {
         return newPaste(developerKey, contents, title).paste().getLink();
     }
 
-    /**
-     * Generates a new paste and returns it
-     * 
-     * @param developerKey
-     *            a developer key which can be fetched from the pastebin API
-     *            page
-     * @param contents
-     *            contents of the paste
-     * @param title
-     *            title of the paste
-     * @return a new paste
-     */
+    
     public static PastebinPaste newPaste(String developerKey, String contents, String title) {
         PastebinPaste paste = new PastebinPaste(developerKey, contents);
         paste.setPasteTitle(title);
         return paste;
     }
 
-    /**
-     * Generates a new paste and returns it
-     * 
-     * @param developerKey
-     *            a developer key which can be fetched from the pastebin API
-     *            page
-     * @param contents
-     *            contents of the paste
-     * @return a new paste
-     */
+    
     public static PastebinPaste newPaste(String developerKey, String contents) {
         return newPaste(developerKey, contents, null);
     }
 
-    /**
-     * Gets the current trending pastebin pastes
-     * 
-     * @param developerKey
-     *            a developer key which can be fetched from the pastebin API
-     *            page
-     * @return an array of {@link PastebinLink}
-     * @throws ParseException
-     *             if it failed to parse the trending pastes
-     */
+    
     public static PastebinLink[] getTrending(String developerKey) throws ParseException {
         if (developerKey == null || developerKey.isEmpty()) {
             throw new IllegalArgumentException("Developer key can't be null or empty.");
@@ -198,20 +123,7 @@ public class Pastebin {
         throw new ParseException("Failed to parse pastes: " + response);
     }
 
-    /**
-     * Gets the most recent pastes. In order to use it, it's necessary to have a
-     * <i>lifetime pro</i> account and white-list your IP. Se more on
-     * <a href="https://pastebin.com/api_scraping_faq">Pastebin Scraping Api</a>
-     * 
-     * Note: unfortunably, it's not possible to get the number of hits.
-     * 
-     * The options for the post are: limit: up to 500. default is 50. lang: any
-     * of the syntaxes allowed for Pastebin.
-     * 
-     * @param post
-     *            the <code>Post</code> with the options
-     * @return the pastes.
-     */
+   
     public static PastebinLink[] getMostRecent(Post post) throws ParseException {
         String url = API_SCRAPING_LINK;
         if (post != null && !post.getPost().isEmpty()) {
