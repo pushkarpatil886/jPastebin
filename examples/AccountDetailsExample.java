@@ -1,3 +1,4 @@
+package example
 import java.net.MalformedURLException;
 
 import org.jpaste.pastebin.account.PastebinAccount;
