@@ -2,13 +2,6 @@ import org.jpaste.pastebin.Pastebin;
 import org.jpaste.pastebin.PastebinLink;
 import org.jpaste.pastebin.exceptions.ParseException;
 
-/**
- * 
- * Example on how to get the most popular trending paste
- * 
- * @author Brian B
- *
- */
 public class TrendingExample {
 	
 	public static void main(String[] args) throws ParseException {
