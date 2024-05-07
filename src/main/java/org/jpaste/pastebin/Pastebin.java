@@ -24,17 +24,8 @@ import org.xml.sax.InputSource;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * 
- * A global representation of the pastebin site
- * 
- * <p>
- * Holds various constants and method shortcuts
- * </p>
- * 
- * @author Brian B
- * 
- */
+
+
 public class Pastebin {
     /**
      * Used to interact with the pastebin API

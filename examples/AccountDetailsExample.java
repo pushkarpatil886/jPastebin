@@ -1,3 +1,4 @@
+package example
 import java.net.MalformedURLException;
 
 import org.jpaste.pastebin.account.PastebinAccount;
@@ -5,13 +6,7 @@ import org.jpaste.pastebin.account.PastebinAccountDetails;
 import org.jpaste.pastebin.exceptions.LoginException;
 import org.jpaste.pastebin.exceptions.ParseException;
 
-/**
- * 
- * An example on how to fetch account details from a pastebin account
- * 
- * @author Brian B
- *
- */
+
 public class AccountDetailsExample {
 	
 	public static void main(String[] args) throws LoginException, ParseException, MalformedURLException {
